@@ -32,4 +32,4 @@ Bubble Sort works by repeatedly stepping through the list, comparing adjacent el
 2. Open a terminal in the directory containing the file
 3. Compile the program:
    ```bash
-   gcc bubblesort.c -o bubblesort```
+   gcc bubblesort.c -o bubblesort
