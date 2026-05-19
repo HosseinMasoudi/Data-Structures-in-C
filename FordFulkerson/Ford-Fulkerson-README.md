@@ -89,4 +89,4 @@ The maximum possible flow is 19
 - All capacities are stored as integers.
 - This implementation assumes non-negative edge capacities.
 
-To learn more about the max flow topic, watch Professor Hadi Yousefi's video: https://www.aparat.com/v/u1441mi
+To learn more about the max flow topic, watch Professor Hadi Yousefi's video (language : farsi): https://www.aparat.com/v/u1441mi
