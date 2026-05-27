@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-void BubbelSort(int a[], int N);
-void printArray(int a[], int N);
+void printArray(const int *const a, int N);
+void BubbelSort(int *const a, int N);
 void swap(int *x, int *y);
 
 int main() {
@@ -15,7 +15,7 @@ int main() {
     return 0;
 }
 
-void BubbelSort(int a[], int N)
+void BubbelSort(int *const a, int N)
 {
     int i, j, swapped;
     for (i = 0; i < N-1; i++)
@@ -31,7 +31,7 @@ void BubbelSort(int a[], int N)
     }
 }
 
-void printArray(int a[], int N)
+void printArray(const int *const a, int N)
 {
     int i;
     for (i=0; i < N; i++)
