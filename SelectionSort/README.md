@@ -4,35 +4,49 @@ This repository contains a clean, educational implementation of the **Selection 
 
 ## What is Selection Sort?
 
-Selection Sort is a simple, intuitive comparison-based sorting algorithm. It works by dividing the input list into two parts: the sublist of items already sorted (which is built up from left to right) and the sublist of items remaining to be sorted.
+Selection Sort is a simple, intuitive comparison-based sorting algorithm. It works by dividing the input list into two parts: the sorted portion and the unsorted portion.
 
 ### How it works:
-1.  **Find the Minimum:** It starts at the beginning of the array and searches for the smallest element in the unsorted portion.
-2.  **Swap:** Once the minimum element is found, it is swapped with the first element of the unsorted portion.
-3.  **Repeat:** The boundary of the sorted portion moves one element to the right, and the process repeats until the entire array is sorted.
+1.  **Find the Minimum:** It scans the unsorted portion to find the smallest element.
+2.  **Swap:** It swaps the found minimum element with the first element of the unsorted portion.
+3.  **Repeat:** The process repeats until the entire array is sorted.
 
-**Time Complexity:** $O(n^2)$
-**Space Complexity:** $O(1)$ (It is an in-place sorting algorithm).
+## Complexity Analysis
+
+The efficiency of the algorithm can be broken down into the number of comparisons and swaps:
+
+*   **Total Comparisons:** The comparison statement `if (list[j] < list[min])` is executed:
+    $$\frac{n(n-1)}{2}$$
+    This remains constant regardless of the initial order of the elements.
+*   **Total Swaps:** The `swap(&list[i], &list[min])` function is called:
+    $$n-1$$
+    This is one of the primary advantages of Selection Sort: it minimizes the number of swaps.
+
+**Time Complexity:** $O(n^2)$  
+**Space Complexity:** $O(1)$ (In-place algorithm)
+
+## Stability and Characteristics
+
+*   **In-place Algorithm:** It requires only a constant amount $O(1)$ of additional memory space.
+*   **Unstable Sorting:** By default, Selection Sort is **Unstable**. This means it may change the relative order of elements with equal keys.
+*   **Optimization Note:** Every unstable sorting algorithm can be transformed into a **Stable** one without increasing its asymptotic time complexity. For example, in Selection Sort, this can be achieved by considering the **original indices** of the elements during the comparison process to break ties.
 
 ## Features
-- **Randomized Input:** Generates random integers for the array, allowing you to test the algorithm with different datasets easily.
+- **Randomized Input:** Generates random integers to test the algorithm with different datasets.
 - **Pointer Manipulation:** Demonstrates proper use of pointers and memory swapping in C.
 - **User Input Validation:** Handles array size inputs safely to prevent buffer overflows.
 
 ## How to Run
 
-1.  **Clone the repository** (or download the source code).
-2.  **Compile the code** using a C compiler (like GCC):
+1.  **Compile the code:**
     ```bash
     gcc -o selection_sort main.c
     ```
-3.  **Run the executable:**
+2.  **Run the executable:**
     ```bash
     ./selection_sort
     ```
-4.  **Enter the number of elements** when prompted, and the program will generate, sort, and display the results.
 
 ## Prerequisites
-- A C compiler (e.g., `gcc`, `clang`, or any IDE like VS Code, CLion, or Dev-C++).
-- Basic knowledge of C (for modifying or testing the code).
-
+- A C compiler (GCC, Clang, or any standard C IDE).
+- Basic knowledge of C and Data Structures.
