@@ -94,9 +94,3 @@ Then enter an odd number between `1` and `15` when prompted.
 ## Files
 
 - `magic_square.c` — main C source code
-
----
-
-## License
-
-This project is provided for educational purposes. You may use, modify, and share it freely.
