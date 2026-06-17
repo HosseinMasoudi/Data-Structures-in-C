@@ -1,56 +1,86 @@
-# Stack Implementation
+# Stack Implementation in C (Array-Based)
 
-## Description
+This project provides a simple and educational implementation of a **Stack** data structure in the C programming language using a **static array**.
 
-This project is a simple fixed-size stack implementation written in C. It demonstrates the core Last-In, First-Out (LIFO) behavior of a stack using an array and provides the basic operations needed to work with it:
+The program demonstrates the basic stack operations such as **push**, **pop**, and **peek**, along with helper functions to check whether the stack is **empty** or **full**.
 
-- `push` to add an item
-- `pop` to remove the most recent item
-- `peek` to view the top item without removing it
-- `isEmpty` and `isFull` to check stack state
+---
 
-The `main()` function includes a small demo that pushes a few values, prints the top element, and then pops all values from the stack.
+## What is a Stack?
 
-## Features
+A **stack** is a linear data structure that follows the **LIFO (Last In, First Out)** principle.
 
-- Array-based stack implementation
-- Fixed maximum size defined by `MAX_SIZE`
-- Overflow protection when the stack is full
-- Underflow protection when the stack is empty
-- Simple console output for each stack operation
-- Beginner-friendly example of stack fundamentals in C
+This means the **last element inserted into the stack is the first one to be removed**.
 
-## Technologies Used
+Common real-world examples include:
 
-- C
-- Standard C libraries:
-  - `stdio.h`
-  - `stdbool.h`
+- Function call stack in programs
+- Undo/Redo operations in editors
+- Expression evaluation
+- Backtracking algorithms
 
-## Installation
+---
 
-1. Make sure you have a C compiler installed.
-   - On Linux or macOS, `gcc` or `clang` will work.
-   - On Windows, you can use MinGW, WSL, or another C toolchain.
-2. Clone or download this repository.
-3. Open a terminal in the project root.
-4. Build the program:
+## Stack Operations Implemented
 
-```bash
-gcc Stack/Stack.c -o stack
+This implementation supports the following operations:
+
+### `initStack(Stack* s)`
+Initializes the stack by setting the `top` index to `-1`.
+
+### `push(Stack* s, int value)`
+Adds a new element to the **top of the stack**.
+
+If the stack is full, a **Stack Overflow** message is displayed.
+
+### `pop(Stack* s)`
+Removes the **top element** from the stack and returns it.
+
+If the stack is empty, a **Stack Underflow** message is displayed.
+
+### `peek(Stack* s)`
+Returns the element at the **top of the stack** without removing it.
+
+### `isEmpty(Stack* s)`
+Checks whether the stack is empty.
+
+### `isFull(Stack* s)`
+Checks whether the stack is full.
+
+---
+
+## Data Structure
+
+The stack is implemented using a `struct`:
+
+```c
+typedef struct {
+    int arr[MAX_SIZE];
+    int top;
+} Stack;
 ```
 
-5. Run the executable:
+- `arr[MAX_SIZE]` → stores the stack elements
+- `top` → index of the current top element
 
-```bash
-./stack
+The maximum stack capacity is defined by:
+
+```c
+#define MAX_SIZE 100
 ```
 
-## Usage
+---
 
-The program is self-contained and runs the demonstration from `main()` automatically.
+## Example Program Behavior
 
-Example output may look like this:
+The `main()` function demonstrates stack usage:
+
+1. Initialize the stack
+2. Push elements (`10`, `20`, `30`)
+3. Print the top element after each push using `peek`
+4. Pop elements until the stack becomes empty
+
+Example output:
 
 ```text
 Pushed 10 onto the stack
@@ -64,15 +94,51 @@ Popped 20 from the stack
 Popped 10 from the stack
 ```
 
-If you want to reuse the stack functions in another C file, you can call them like this:
+---
 
-```c
-Stack stack;
-initStack(&stack);
+## Time Complexity
 
-push(&stack, 10);
-push(&stack, 20);
+| Operation | Time Complexity |
+|-----------|----------------|
+| Push      | O(1) |
+| Pop       | O(1) |
+| Peek      | O(1) |
+| isEmpty   | O(1) |
+| isFull    | O(1) |
 
-printf("Top element: %d\n", peek(&stack));
-pop(&stack);
+All operations run in **constant time** because they only involve accessing the top index.
+
+---
+
+## Build and Run
+
+### Compile
+
+```bash
+gcc stack.c -o stack
 ```
+
+### Run
+
+```bash
+./stack
+```
+
+---
+
+## Project Structure
+
+```
+stack.c      # Main source code implementing the stack
+README.md    # Project documentation
+```
+
+---
+
+## Notes
+
+- This implementation uses a **fixed-size array**, so the stack capacity is limited.
+- Overflow occurs when trying to push elements beyond `MAX_SIZE`.
+- Underflow occurs when trying to pop from an empty stack.
+
+---
