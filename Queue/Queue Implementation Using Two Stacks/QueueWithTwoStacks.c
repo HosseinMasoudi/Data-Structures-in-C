@@ -38,7 +38,7 @@ void push(Stack* stack, int data)
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
     newNode->next = stack->top;
-    stack->top = newNode;
+    stack->top = newNode; //newNode becomes the new top of the stack address
     stack->size++;
 }
 
@@ -51,7 +51,7 @@ int pop(Stack* stack)
     }
     Node* temp = stack->top;
     int data = temp->data;
-    stack->top = temp->next;
+    stack->top = temp->next; // Move the top pointer to the next node
     free(temp);
     stack->size--;
     return data;
@@ -77,7 +77,7 @@ Queue* createQueue()
 
 bool queueIsEmpty(Queue* queue)
 {
-    return stackIsEmpty(queue->stack_in) && stackIsEmpty(queue->stack_out);
+    return stackIsEmpty(queue->stack_in) && stackIsEmpty(queue->stack_out); //receive true if both stacks are empty, otherwise false
 }
 
 int queueSize(Queue* queue)
